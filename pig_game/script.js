@@ -53,12 +53,12 @@ btnRoll.addEventListener('click', function () {
 });
 
 btnHold.addEventListener('click', function () {
-  if(playing){
+  if (playing) {
     scores[activePlayer] += currentScore;
-  
+
     document.getElementById(`score--${activePlayer}`).textContent =
       scores[activePlayer];
-  
+
     if (scores[activePlayer] >= 20) {
       playing = false;
       diceEl.classList.add('hidden');
@@ -72,4 +72,22 @@ btnHold.addEventListener('click', function () {
       switchPlayer();
     }
   }
+});
+
+btnNew.addEventListener('click', function () {
+  //alterando as variáveis
+  playing = true;
+  score0El.textContent = 0;
+  score1El.textContent = 0;
+  current0El.textContent = 0;
+  current1El.textContent = 0;
+  
+  //voltando para o estilo inicial
+  document
+    .querySelector(`.player--${activePlayer}`)
+    .classList.remove('player--winner');
+
+    activePlayer = 0;
+  document.querySelector(`.player--${activePlayer}`).classList.add('player--active');
+
 });
